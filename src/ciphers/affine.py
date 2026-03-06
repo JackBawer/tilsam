@@ -64,15 +64,15 @@ def affine_break(ciphertext):
 
             b = (c1 - a * p1) % 28
 
-            print(f"🔑 Trying pair {sorted_freq[i][0]}/{sorted_freq[j][0]} → a={a}, b={b}")
+            print(f"Trying pair {sorted_freq[i][0]}/{sorted_freq[j][0]} → a={a}, b={b}")
             decrypted = affine_decrypt(ciphertext, a, b)
 
             # Check if result looks like Arabic text (basic sanity check)
             arabic_ratio = sum(1 for c in decrypted if c in arabic_letters) / max(len(decrypted), 1)
             if arabic_ratio > 0.3:
-                print(f"✅ Found valid key: a={a}, b={b}")
-                print(f"🔓 Decrypted: {decrypted}")
+                print(f"Found valid key: a={a}, b={b}")
+                print(f"Decrypted: {decrypted}")
                 return (a, b), decrypted
 
-    print("❌ Could not break affine cipher.")
+    print("Could not break affine cipher.")
     return None, None

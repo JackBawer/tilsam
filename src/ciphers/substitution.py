@@ -17,32 +17,59 @@ def substitution_decrypt(text, key):
         decrypted += reverse_table.get(char, char)
     return decrypted
 
+# def substitution_break(ciphertext):
+#     sorted_freq = build_frequency_table(ciphertext)
+
+#     guessed_key = {}
+#     for i, (cipher_letter, _) in enumerate(sorted_freq):
+#         if i < len(arabic_frequency_order):
+#             guessed_key[cipher_letter] = arabic_frequency_order[i]
+
+#     print("\n🔑 Guessed mapping:")
+#     for cipher, plain in guessed_key.items():
+#         print(f"  {cipher} → {plain}")
+
+#     decrypted = ''.join(guessed_key.get(char, char) for char in ciphertext)
+#     print(f"🔓 Decrypted: {decrypted}")
+
+#     # Manual correction
+#     print("\n✏️  Enter corrections (e.g. 'و ه' to map و→ه). Press Enter to skip.")
+#     while True:
+#         correction = input("Correct mapping (or Enter to stop): ").strip()
+#         if not correction:
+#             break
+#         parts = correction.split()
+#         if len(parts) == 2:
+#             guessed_key[parts[0]] = parts[1]
+#             decrypted = ''.join(guessed_key.get(char, char) for char in ciphertext)
+#             print(f"🔓 Updated: {decrypted}")
+
+#     return guessed_key, decrypted
 
 def substitution_break(ciphertext):
     sorted_freq = build_frequency_table(ciphertext)
-
+    
     guessed_key = {}
     for i, (cipher_letter, _) in enumerate(sorted_freq):
         if i < len(arabic_frequency_order):
             guessed_key[cipher_letter] = arabic_frequency_order[i]
-
-    print("\n🔑 Guessed mapping:")
+    
+    decrypted = ''.join(guessed_key.get(char, char) for char in ciphertext)
+    
+    print("Guessed mapping:")
     for cipher, plain in guessed_key.items():
         print(f"  {cipher} → {plain}")
-
-    decrypted = ''.join(guessed_key.get(char, char) for char in ciphertext)
-    print(f"🔓 Decrypted: {decrypted}")
-
-    # Manual correction
-    print("\n✏️  Enter corrections (e.g. 'و ه' to map و→ه). Press Enter to skip.")
+    print(f"\nDecrypted: {decrypted}\n")
+    
     while True:
-        correction = input("Correct mapping (or Enter to stop): ").strip()
-        if not correction:
+        user_input = input("Enter correction (cipher plain) or press Enter to finish: ").strip()
+        if not user_input:
             break
-        parts = correction.split()
+        
+        parts = user_input.split()
         if len(parts) == 2:
             guessed_key[parts[0]] = parts[1]
             decrypted = ''.join(guessed_key.get(char, char) for char in ciphertext)
-            print(f"🔓 Updated: {decrypted}")
-
+            print(f"Updated: {decrypted}\n")
+    
     return guessed_key, decrypted

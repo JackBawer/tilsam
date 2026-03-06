@@ -10,10 +10,9 @@ def build_frequency_table(text):
             freq[char] = freq.get(char, 0) + 1
             total += 1
 
-    # Sort by frequency descending
-    sorted_freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-
-    print("\n📊 Frequency Table:")
+    
+    sorted_freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)# Sort by frequency descending
+    print("\nFrequency Table:")
     print(f"{'Letter':<10} {'Count':<10} {'Percentage'}")
     for letter, count in sorted_freq:
         print(f"  {letter:<10} {count:<10} {count/total*100:.2f}%")

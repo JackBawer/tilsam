@@ -18,7 +18,7 @@ def cesar_decrypt(ciphertext, shift):
 
 
 def cesar_break(ciphertext):
-    """Guess the shift by finding the most frequent letter"""
+    """Guess the key by finding the most frequent letter"""
     sorted_freq = build_frequency_table(ciphertext)
 
     # Most frequent letter in cipher
@@ -33,11 +33,11 @@ def cesar_break(ciphertext):
 
     guessed_shift = (cipher_idx - arabic_idx) % 28
 
-    print(f"\n🔑 Most frequent letter in cipher: {most_frequent_cipher}")
-    print(f"🔑 Assumed to be: {most_frequent_arabic}")
-    print(f"🔑 Guessed shift: {guessed_shift}")
+    print(f"\nMost frequent letter in cipher: {most_frequent_cipher}")
+    print(f"Assumed to be: {most_frequent_arabic}")
+    print(f"Guessed shift: {guessed_shift}")
 
     decrypted = cesar_decrypt(ciphertext, guessed_shift)
-    print(f"🔓 Decrypted: {decrypted}")
+    print(f"Decrypted: {decrypted}")
 
     return guessed_shift, decrypted
