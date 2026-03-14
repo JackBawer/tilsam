@@ -19,7 +19,6 @@ src/tilsam/analysis/scoring.py
 src/tilsam/analysis/tables.py
 src/tilsam/ciphers/__init__.py
 src/tilsam/ciphers/affine.py
-src/tilsam/ciphers/base.py
 src/tilsam/ciphers/caesar.py
 src/tilsam/ciphers/substitution.py
 src/tilsam/cli/__init__.py
