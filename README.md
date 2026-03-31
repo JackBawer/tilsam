@@ -45,13 +45,6 @@ pip install -e .
 ```sh
 pip install .
 ```
-
-> If you publish it later, you can replace the above with:
->
-> ```sh
-> pip install tilsam
-> ```
-
 ---
 
 ## Usage (CLI)
